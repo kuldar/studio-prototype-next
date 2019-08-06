@@ -27,7 +27,11 @@ const lightTheme = {
     foreground: colors.gray800,
     background: colors.white,
     border: colors.gray300,
-    hoverBackground: transparentize(0.5, colors.gray300),
+    hoverBackground: colors.gray200,
+    code: {
+      foreground: colors.gray800,
+      background: colors.gray100
+    }
   },
   input: {
     foreground: colors.gray800,
@@ -48,7 +52,8 @@ const lightTheme = {
   },
   transitions: {
     normal: `100ms ease`
-  }
+  },
+  colors
 }
 
 export default lightTheme

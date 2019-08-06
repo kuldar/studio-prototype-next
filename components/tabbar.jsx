@@ -55,6 +55,7 @@ const Wrapper = styled.div`
   height: 40px;
   background-color: ${p => p.theme.tabbar.background};
   box-shadow: ${p => p.theme.shadows.normal};
+  flex-shrink: 0;
 `
 
 const Dots = styled.div`

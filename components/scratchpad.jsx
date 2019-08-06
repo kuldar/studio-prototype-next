@@ -6,6 +6,7 @@ import Prism from 'prismjs'
 // Assets
 import ChevronIcon from '../vectors/chevron-icon'
 import PlayIcon from '../vectors/play-icon'
+import DeleteIcon from '../vectors/delete-icon'
 
 import TypeIconId from '../vectors/type-icon-id'
 import TypeIconString from '../vectors/type-icon-string'
@@ -58,7 +59,7 @@ const Scratchpad = ({ queryCode, tableResult, codeResult, resultMode='table', re
         <Name isOpen={isResultExpanded} onClick={() => handleResultsToggleClick()}><ChevronIcon /> {name}</Name>
         <Nav>
           <NavLink onClick={() => setIsDeleted(true)}>
-            <NavLinkLabel>Delete</NavLinkLabel>
+            <NavLinkIcon><DeleteIcon /></NavLinkIcon>
           </NavLink>
           <NavLink>
             <NavLinkLabel>Open in databrowser</NavLinkLabel>
@@ -229,7 +230,7 @@ const ActionBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${p => p.theme.main.background};
+  background-color: ${p => p.theme.colors.gray200};
 `
 
 const Name = styled.div`
@@ -269,6 +270,18 @@ const NavLinkLabel = styled.div`
   font-size: 12px;
   line-height: 1;
   opacity: 0.5;
+`
+
+const NavLinkIcon = styled.div`
+  transition: opacity 0.1s ease;
+  color: ${p => p.theme.main.foreground};
+  opacity: 0.5;
+
+  svg {
+    display: block;
+    height: 16px;
+    width: 13px;
+  }
 `
 
 const NavLink = styled.div`
@@ -415,18 +428,15 @@ const Body = styled.div`
 
 const RowContainer = styled.div`
   border-bottom: 1px solid ${p => p.theme.card.border};
-  background-color: ${p => p.isExpanded ? p.theme.card.hoverBackground : 'transparent'};
-
   &:hover {
-    background-color: ${p => p.theme.card.hoverBackground};
+    cursor: pointer;
+    background-color: ${p => p.theme.colors.gray100};
   }
 `
 
 const Row = styled.div`
   display: flex;
   color: ${p => p.theme.card.foreground};
-
-  &:hover { cursor: pointer; }
 `
 
 const CodeResult = styled.div`
@@ -439,10 +449,8 @@ const CodeResult = styled.div`
 `
 
 const RowExpansion = styled.div`
-  color: ${p => p.theme.code.foreground};
-  background-color: ${p => p.theme.code.background};
-  box-shadow: ${p => p.theme.shadows.light};
-  margin: 8px;
+  color: ${p => p.theme.card.code.foreground};
+  margin: 0 8px 4px 8px;
   padding: 8px;
   border-radius: 6px;
   font-size: 13px;
