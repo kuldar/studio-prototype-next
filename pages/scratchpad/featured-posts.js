@@ -22,7 +22,7 @@ const DatabrowserPage = () => {
       <Sidebar activeGroup='scratchpad' />
       <Main>
         <PageTitle title="Featured posts">
-        <PageTitleLink children={<DotsIcon/>} />
+          <PageTitleLink children={<DotsIcon/>} />
           <PageTitleLink children="Export" />
           <PageTitleButton><PlayIcon /> Run all</PageTitleButton>
         </PageTitle>

@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
+  height: 28px;
 `
 
 const Title = styled.div`
