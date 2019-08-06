@@ -3,9 +3,6 @@ import styled from 'styled-components'
 import { transparentize, darken } from 'polished'
 import Prism from 'prismjs'
 
-// Mock data
-import data from '../data'
-
 // Assets
 import ChevronIcon from '../vectors/chevron-icon'
 import PlayIcon from '../vectors/play-icon'
@@ -93,7 +90,7 @@ const Scratchpad = ({ queryCode, tableResult, codeResult, resultMode='table', re
 
           <Body>
             { tableResult.rows.map(row => (
-                <RowContainer onClick={() => handleRowClick(row.id)}>
+                <RowContainer isExpanded={expandedRows.includes(row.id)} onClick={() => handleRowClick(row.id)}>
                   <Row>
                     <Cell width={columnWidths[0]}>{row.firstName}</Cell>
                     <Cell width={columnWidths[1]}>{row.lastName}</Cell>
@@ -120,7 +117,7 @@ const Scratchpad = ({ queryCode, tableResult, codeResult, resultMode='table', re
 
       { isResultExpanded && (mode === 'code') &&
         <CodeResult onClick={e => e.stopPropagation()}>
-          { data.codeResults[1].map(codeRow => renderCodeRow(codeRow)) }
+          { codeResult.map(codeRow => renderCodeRow(codeRow)) }
         </CodeResult>
       }
 
@@ -167,6 +164,8 @@ const CodeRowContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 1px 0;
+  white-space: nowrap;
+  overflow: hidden;
 
   &:hover {
     ${ p => ['object', 'array'].includes(p.type) && `
@@ -181,6 +180,7 @@ const CodeRowContainer = styled.div`
 const CodeRowToggle = styled.div`
   width: 16px;
   color: ${p => p.theme.code.foreground};
+  flex-shrink: 0;
 
   svg {
     display: block;
@@ -415,35 +415,16 @@ const Body = styled.div`
 
 const RowContainer = styled.div`
   border-bottom: 1px solid ${p => p.theme.card.border};
-
-  background-color: ${
-    p => p.isActive
-    ? p.hasChanged
-      ? transparentize(0.5, p.theme.card.foreground)
-      : p.theme.selection.background
-    : 'transparent'
-  };
+  background-color: ${p => p.isExpanded ? p.theme.card.hoverBackground : 'transparent'};
 
   &:hover {
-    background-color: ${
-      p => p.isActive
-      ? p.hasChanged
-        ? transparentize(0.5, p.theme.card.foreground)
-        : p.theme.selection.background
-      : p.theme.card.hoverBackground
-    };
+    background-color: ${p => p.theme.card.hoverBackground};
   }
 `
 
 const Row = styled.div`
   display: flex;
-  color: ${
-    p => p.isActive
-    ? p.theme.selection.foreground
-    : p.hasChanged
-      ? transparentize(0.5, p.theme.card.foreground)
-      : p.theme.card.foreground
-  };
+  color: ${p => p.theme.card.foreground};
 
   &:hover { cursor: pointer; }
 `
@@ -460,8 +441,9 @@ const CodeResult = styled.div`
 const RowExpansion = styled.div`
   color: ${p => p.theme.code.foreground};
   background-color: ${p => p.theme.code.background};
+  box-shadow: ${p => p.theme.shadows.light};
   margin: 8px;
-  padding: 16px 8px;
+  padding: 8px;
   border-radius: 6px;
   font-size: 13px;
   font-family: 'Roboto Mono', monospace;

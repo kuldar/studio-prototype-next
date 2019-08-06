@@ -1,6 +1,7 @@
 // Libraries
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
+import { useRouter } from 'next/router'
 
 // Assets
 import CloseIcon from '../vectors/close-icon'
@@ -14,21 +15,40 @@ const Tabbar = () => (
       <Dot />
     </Dots>
     <Tabs>
-      <Tab name="Admin Users" isActive={true} />
-      <Tab name="End Subscription" />
-      <Tab name="Schema" />
+      <Tab name="Pro Membership users" href="/scratchpad/pro-membership-users" />
+      <Tab name="Featured posts" href="/scratchpad/featured-posts" />
+      <Tab name="Project" href="/project" />
+      <Tab name="Users" href="/databrowser/users" />
     </Tabs>
   </Wrapper>
 )
 
-const Tab = ({ name, isActive }) => (
-  <TabContainer isActive={isActive}>
-    <TabName isActive={isActive}>{name}</TabName>
-    <TabClose><CloseIcon /></TabClose>
-  </TabContainer>
-)
+const Tab = ({ name, href }) => {
+  const router = useRouter()
+  const [isDeleted, setAsDeleted] = useState(false)
+  const isActive = router.asPath === href
+
+  const handleClick = e => {
+    e.preventDefault()
+    router.push(href)
+  }
+
+  const handleDelete = e => {
+    setAsDeleted(true)
+    e.preventDefault()
+  }
+
+  return (
+    !isDeleted &&
+    <TabContainer isActive={isActive} onClick={handleClick}>
+      <TabName>{name}</TabName>
+      <TabClose onClick={handleDelete}><CloseIcon /></TabClose>
+    </TabContainer>
+  )
+}
 
 const Wrapper = styled.div`
+  -webkit-app-region: drag;
   position: relative;
   display: flex;
   align-items: center;
@@ -44,6 +64,7 @@ const Dots = styled.div`
 `
 
 const Dot = styled.div`
+  opacity: 0;
   width: 12px;
   height: 12px;
   border-radius: 12px;
@@ -61,7 +82,7 @@ const TabName = styled.div`
   font-weight: 600;
   line-height: 1;
   margin-right: 10px;
-  opacity: ${p => p.isActive ? 1 : 0.5};
+  opacity: 0.5;
   color: ${p => p.theme.tabbar.foreground};
 `
 
@@ -80,6 +101,7 @@ const activeTabStyles = css`
 `
 
 const TabContainer = styled.div`
+  -webkit-app-region: no-drag;
   transition: background-color ${p => p.theme.transitions.normal};
   display: flex;
   align-items: center;

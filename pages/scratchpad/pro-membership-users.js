@@ -4,22 +4,22 @@ import styled from 'styled-components'
 import { darken } from 'polished'
 
 // Example data
-import data from '../data'
+import data from '../../data'
 
 // Components
-import Layout from '../components/layout'
-import Sidebar from '../components/sidebar'
-import Main from '../components/main'
-import Scratchpad from '../components/scratchpad'
+import Layout from '../../components/layout'
+import Sidebar from '../../components/sidebar'
+import Main from '../../components/main'
+import Scratchpad from '../../components/scratchpad'
 
 // Assets
-import PlayIcon from '../vectors/play-icon'
+import PlayIcon from '../../vectors/play-icon'
 
 // Scratchpad
 const ScratchpadPage = () => {
   return (
     <Layout title="Prisma Studio">
-      <Sidebar />
+      <Sidebar activeGroup='scratchpad' />
       <Main>
         <Top>
           <Title>Pro Membership users</Title>
@@ -32,10 +32,10 @@ const ScratchpadPage = () => {
           </Nav>
         </Top>
         <Scratchpad
+          resultExpanded
           queryCode={data.queryCodes[0]}
           tableResult={data.tableResults[0]}
-          codeResult={data.codeResults[0]}
-          resultExpanded={true} />
+          codeResult={data.codeResults[0]} />
         <Scratchpad
           queryCode={data.queryCodes[1]}
           tableResult={data.tableResults[1]}
@@ -50,7 +50,7 @@ const Top = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 `
 
 const Title = styled.div`
