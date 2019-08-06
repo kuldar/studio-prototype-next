@@ -12,7 +12,6 @@ const Wrapper = styled.div`
   padding: 8px;
   background-color: ${p => p.theme.main.background};
   overflow: scroll;
-  max-height: 100vh;
 `
 
 export default Main

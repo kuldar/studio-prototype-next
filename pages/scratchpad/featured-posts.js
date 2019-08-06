@@ -13,6 +13,7 @@ import Scratchpad from '../../components/scratchpad'
 
 // Assets
 import PlayIcon from '../../vectors/play-icon'
+import DotsIcon from '../../vectors/dots-icon'
 
 // Databrowser
 const DatabrowserPage = () => {
@@ -20,10 +21,10 @@ const DatabrowserPage = () => {
     <Layout title="Prisma Studio">
       <Sidebar activeGroup='scratchpad' />
       <Main>
-        <PageTitle title="Pro Membership users">
-          <PageTitleLink children="Delete" />
+        <PageTitle title="Featured posts">
+        <PageTitleLink children={<DotsIcon/>} />
           <PageTitleLink children="Export" />
-          <PageTitleButton children="Run all" icon={<PlayIcon />} />
+          <PageTitleButton><PlayIcon /> Run all</PageTitleButton>
         </PageTitle>
         <Scratchpad
           resultExpanded

@@ -51,11 +51,9 @@ const PageTitleLink = styled.div`
 
 const PageTitleButton = styled.div`
   display: flex;
-  flex-shrink: 0;
   align-items: center;
   padding: 0 10px;
   border-radius: 4px;
-  flex-shrink: 0;
   transition: background-color 0.1s ease;
   height: 28px;
   color: white;
