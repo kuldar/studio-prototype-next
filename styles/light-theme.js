@@ -11,6 +11,12 @@ const lightTheme = {
     foreground: colors.white,
     background: colors.blue,
   },
+  tabbar: {
+    foreground: colors.dark,
+    background: colors.white,
+    border: colors.gray300,
+    hoverBackground: colors.gray200,
+  },
   sidebar: {
     foreground: colors.dark,
     background: colors.white,
@@ -45,6 +51,9 @@ const lightTheme = {
   shadows: {
     normal: `0px 3px 6px rgba(26, 32, 44, 0.05), 0px 1px 3px rgba(26, 32, 44, 0.1)`,
     bolder: `0px 4px 8px rgba(26, 32, 44, 0.1), 0px 1px 3px rgba(26, 32, 44, 0.1);`
+  },
+  transitions: {
+    normal: `100ms ease`
   }
 }
 

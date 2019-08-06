@@ -6,6 +6,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 // Locals
 import { documentStyles } from '../styles/global'
 import themes from '../styles/themes'
+import Tabbar from '../components/tabbar'
 
 // Layout
 const Layout = ({ children, title = 'Prisma Studio' }) => (
@@ -16,7 +17,10 @@ const Layout = ({ children, title = 'Prisma Studio' }) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <GlobalStyle />
-    <Wrapper>{children}</Wrapper>
+    <Wrapper>
+      <Tabbar />
+      <Main>{children}</Main>
+    </Wrapper>
   </div>
 )
 
@@ -29,8 +33,15 @@ const GlobalStyle = createGlobalStyle`
 const Wrapper = styled.div`
   position: relative;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
+  /* background: red; */
+`
+
+const Main = styled.div`
+  display: flex;
+  flex: 1;
 `
 
 export default Layout
