@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import DatabaseIcon from '../vectors/database-icon'
 import ModelsIcon from '../vectors/models-icon'
 import ScratchpadIcon from '../vectors/scratchpad-icon'
+import Scratchpad2Icon from '../vectors/scratchpad-2-icon'
 import ToggleIcon from '../vectors/toggle-icon'
 import SearchIcon from '../vectors/search-icon'
 
@@ -32,15 +33,15 @@ const Sidebar = () => {
   return (
     <Wrapper>
       <Nav>
-        <IconLink
+        {/* <IconLink
           href="/project"
-          icon={<DatabaseIcon />} />
+          icon={<DatabaseIcon />} /> */}
         <IconLink
           href="/databrowser"
           icon={<ModelsIcon />} />
         <IconLink
           href="/scratchpad"
-          icon={<ScratchpadIcon />} />
+          icon={<Scratchpad2Icon />} />
       </Nav>
       <Spacer />
       <Nav>

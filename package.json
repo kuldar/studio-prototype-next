@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "debounce": "^1.2.0",
     "next": "latest",
     "polished": "^3.4.1",
     "prismjs": "^1.17.1",

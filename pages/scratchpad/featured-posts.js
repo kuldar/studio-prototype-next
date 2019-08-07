@@ -31,11 +31,6 @@ const DatabrowserPage = () => {
           queryCode={data.queryCodes[0]}
           tableResult={data.tableResults[0]}
           codeResult={data.codeResults[0]} />
-        <Scratchpad
-          queryCode={data.queryCodes[1]}
-          tableResult={data.tableResults[1]}
-          codeResult={data.codeResults[1]}
-          resultMode="code"/>
       </Main>
     </Layout>
   )

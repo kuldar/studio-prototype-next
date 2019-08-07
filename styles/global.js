@@ -44,6 +44,8 @@ export const documentStyles = css`
     margin: 0;
   }
 
+  input { font-family: 'Open Sans', sans-serif; }
+
   pre, code {
     font-family: 'Roboto Mono', monospace;
   }

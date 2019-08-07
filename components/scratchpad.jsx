@@ -442,7 +442,7 @@ const Row = styled.div`
 const CodeResult = styled.div`
   color: ${p => p.theme.code.foreground};
   background-color: ${p => p.theme.code.background};
-  padding: 16px 8px;
+  padding: 8px;
   border-radius: 0 0 6px 6px;
   font-size: 13px;
   font-family: 'Roboto Mono', monospace;

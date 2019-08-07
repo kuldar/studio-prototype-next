@@ -3,10 +3,21 @@ import React from 'react'
 import styled from 'styled-components'
 import { darken } from 'polished'
 
+// Assets
+import ChevronIcon from '../vectors/chevron-icon'
+
 // Page Title
-const PageTitle = ({ title, children }) => (
+const PageTitle = ({ title, secondTitle, children }) => (
   <Wrapper>
     <Title>{title}</Title>
+    { secondTitle &&
+      <SecondTitle>
+        <Slash children="/" />
+        <span>{secondTitle}</span>
+        <ChevronIcon />
+      </SecondTitle>
+    }
+    <Spacer/>
     <Nav>{children}</Nav>
   </Wrapper>
 )
@@ -15,16 +26,43 @@ const PageTitle = ({ title, children }) => (
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 8px;
-  height: 28px;
+`
+
+const Spacer = styled.div`
+  flex: 1;
 `
 
 const Title = styled.div`
   color: ${p => p.theme.main.foreground};
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  margin-left: 8px;
+  margin-left: 4px;
+`
+
+const Slash = styled.span`
+  opacity: 0.4;
+  margin: 0 6px;
+`
+
+const SecondTitle = styled.div`
+  display: flex;
+  align-items: center;
+  color: ${p => p.theme.main.foreground};
+  font-size: 14px;
+  font-weight: 600;
+
+  svg {
+    transition: opacity ${p => p.theme.transitions.normal};
+    color: ${p => p.theme.main.foreground};
+    margin-left: 6px;
+    opacity: 0.4;
+  }
+
+  &:hover {
+    cursor: pointer;
+    svg { opacity: 1; }
+  }
 `
 
 const Nav = styled.div`
@@ -53,10 +91,10 @@ const PageTitleLink = styled.div`
 const PageTitleButton = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 8px;
   border-radius: 4px;
   transition: background-color 0.1s ease;
-  height: 28px;
+  height: 24px;
   color: white;
   font-size: 12px;
   font-weight: 600;

@@ -1,38 +1,34 @@
 // Libraries
 import React from 'react'
 
-// Example data
-import data from '../../data'
-
 // Components
 import Layout from '../../components/layout'
 import Sidebar from '../../components/sidebar'
 import Main from '../../components/main'
+import Databrowser from '../../components/databrowser'
 import PageTitle, { PageTitleLink, PageTitleButton } from '../../components/page-title'
-import Scratchpad from '../../components/scratchpad'
 
 // Assets
-import PlusIcon from '../../vectors/plus-icon-small'
 import DotsIcon from '../../vectors/dots-icon'
+import PlusIcon from '../../vectors/plus-icon-small'
 
-// Scratchpad
-const ScratchpadPage = () => {
+// Data
+import data from '../../data'
+
+// Databrowser
+const DatabrowserPage = () => {
   return (
     <Layout title="Prisma Studio">
-      <Sidebar activeGroup='scratchpad' />
+      <Sidebar />
       <Main>
-        <PageTitle title="Pro Membership users">
+      <PageTitle title="User" secondTitle="All">
           <PageTitleLink children={<DotsIcon/>} />
-          <PageTitleButton><PlusIcon /> New User</PageTitleButton>
+          <PageTitleButton><PlusIcon /> Add User</PageTitleButton>
         </PageTitle>
-        <Scratchpad
-          resultExpanded
-          queryCode=""
-          tableResult={data.tableResults[0]}
-          codeResult={data.codeResults[0]} />
+        <Databrowser tableItems={data.tableResults[0]} />
       </Main>
     </Layout>
   )
 }
 
-export default ScratchpadPage
+export default DatabrowserPage

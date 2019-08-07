@@ -27,7 +27,6 @@ const ScratchpadPage = () => {
           <PageTitleButton><PlayIcon /> Run all</PageTitleButton>
         </PageTitle>
         <Scratchpad
-          resultExpanded
           queryCode={data.queryCodes[0]}
           tableResult={data.tableResults[0]}
           codeResult={data.codeResults[0]} />
@@ -35,7 +34,7 @@ const ScratchpadPage = () => {
           queryCode={data.queryCodes[1]}
           tableResult={data.tableResults[1]}
           codeResult={data.codeResults[1]}
-          resultMode="code"/>
+          resultMode="code" />
       </Main>
     </Layout>
   )
